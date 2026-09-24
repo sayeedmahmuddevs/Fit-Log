@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <hr  className="opacity-15 m-5"/>
 
-        <div className="container mx-auto">{children}</div>
+        <div className="container mx-auto mt-10">{children}</div>
         
         </body>
     </html>
