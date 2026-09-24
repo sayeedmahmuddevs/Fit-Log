@@ -4,9 +4,9 @@ import {AllData} from "@/Data/AllData"
 import { TypeData } from '@/Type'
 
 
+const allData = await AllData()
 
 async function Cards (){
-  const allData = await AllData()
   console.log(allData)
   return (
     <div>

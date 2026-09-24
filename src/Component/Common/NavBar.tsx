@@ -1,7 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import logo from "@/assets/logo.png";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 
 function NavBar() {
+
+     const pathname = usePathname();
+
+const linkClass = (path: string) =>
+  pathname === path
+    ? "bg-gray-800 text-amber-400 px-2 rounded-2xl py-0.5 outline outline-gray-700"
+    : "hover:bg-gray-800 hover:text-amber-400 rounded-2xl py-0.5 px-2 hover:outline outline-gray-700";
+
   return (
     <nav className="fixed top-0 left-0 z-50 w-full">
       <div className="flex justify-between items-center container mx-auto bg-black py-5">
@@ -18,12 +31,12 @@ function NavBar() {
         </div>
 
         <ul className="flex gap-5">
-          <li className="bg-gray-800 text-amber-400 px-2 rounded-2xl py-0.5 cursor-pointer outline outline-gray-700">
+          <Link href="/" className={linkClass("/")}>
             Workouts
-          </li>
-          <li className="hover:bg-gray-800 hover:text-amber-400 rounded-2xl py-0.5 px-2 cursor-pointer hover:outline outline-gray-700">
+          </Link>
+          <Link href="/My-Plane" className={linkClass('/My-Plane')}>
             My-plans
-          </li>
+          </Link>
         </ul>
 
         <div className="flex gap-5">

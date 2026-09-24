@@ -10,14 +10,14 @@ interface CardDetailsProps {
 
 function CardDetails({ card }: CardDetailsProps) {
   return (
-    <div className="rounded-xl overflow-hidden bg-gray-700">
+    <div className="rounded-xl overflow-hidden bg-gray-700 group hover:-translate-y-2 transition-transform duration-200">
       <div className="h-60 bg-red-200">
         <Image
           src={card.image}
           alt={card.name}
           width={300}
           height={200}
-          className="h-full w-full"
+          className="h-full w-full group-hover:scale-110 transition-transform duration-200"
         />
       </div>
 
