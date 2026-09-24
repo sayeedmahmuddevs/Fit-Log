@@ -1,13 +1,13 @@
 import React from 'react'
-import CardDetails from '../Common/CardDetails'
+import CardDetails from '../Common/Card'
 import {AllData} from "@/Data/AllData"
 import { TypeData } from '@/Type'
 
 
-const allData = await AllData()
 
 async function Cards (){
-  console.log(allData)
+  const allData : TypeData[] = await AllData()
+  
   return (
     <div>
       <div className='px-10 mt-20 mb-8'>

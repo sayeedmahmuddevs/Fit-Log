@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png"
 function Footer() {
   return (
     
-      <footer className="flex justify-between items-center container mx-auto bg-black py-5 my-10 ">
+      <footer className="flex justify-between items-center container mx-auto bg-gray-300 dark:bg-black py-10 mt-10 ">
         <div className="flex gap-2">
           <Image
             src={logo}

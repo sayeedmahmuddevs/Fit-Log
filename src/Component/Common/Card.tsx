@@ -1,16 +1,18 @@
 import { TypeData } from "@/Type";
 import Image from "next/image";
+import Link from "next/link";
 import { CiTimer } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 
-interface CardDetailsProps {
+interface CardProps {
   card: TypeData;
 }
 
-function CardDetails({ card }: CardDetailsProps) {
+function Card({ card }: CardProps) {
   return (
-    <div className="rounded-xl overflow-hidden bg-gray-700 group hover:-translate-y-2 transition-transform duration-200">
+    <Link href={`/Fitlog/${card.id}`}>
+        <div className="rounded-xl overflow-hidden bg-gray-300 dark:bg-gray-800 group hover:-translate-y-2 transition-transform duration-200 border border-black hover:border-amber-200">
       <div className="h-60 bg-red-200">
         <Image
           src={card.image}
@@ -60,7 +62,9 @@ function CardDetails({ card }: CardDetailsProps) {
         </div>
       </div>
     </div>
+    </Link>
+    
   );
 }
 
-export default CardDetails;
+export default Card;

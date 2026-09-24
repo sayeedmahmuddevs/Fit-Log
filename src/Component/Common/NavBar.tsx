@@ -17,7 +17,7 @@ const linkClass = (path: string) =>
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full">
-      <div className="flex justify-between items-center container mx-auto bg-black py-5">
+      <div className="flex justify-between items-center container mx-auto dark:bg-black bg-gray-300 py-5">
         <div className="flex gap-2">
           <Image
             src={logo}
