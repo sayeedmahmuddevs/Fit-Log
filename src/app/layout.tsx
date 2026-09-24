@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+import { Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/Component/Common/NavBar";
 
@@ -13,10 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const robotoSet = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,13 +23,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${robotoSet.className} ${geistSans.variable} ${geistMono.variable} h-full antialiased bg-black text-white`}
+      className={` ${geistSans.variable} ${geistMono.variable} h-full antialiased `}
     >
-      <body className="min-h-full flex flex-col container mx-auto">
+      <body className="min-h-full flex flex-col bg-black text-white">
         
         <NavBar/>
-        <div>{children}</div>
-        
+
+        <hr  className="opacity-15 m-5"/>
+
+        <div className="container mx-auto">{children}</div>
         
         </body>
     </html>
