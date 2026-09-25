@@ -31,6 +31,7 @@ function NavBar() {
           <h1 className="text-2xl uppercase font-bold">Fitlog</h1>
         </Link>
 
+      {/* page nav */}
         <ul className="flex gap-5">
           <Link href="/" className={linkClass("/")}>
             Workouts
@@ -40,6 +41,7 @@ function NavBar() {
           </Link>
         </ul>
 
+        
         <div className="flex gap-5">
           <button
             onClick={() => setShow(true)}
