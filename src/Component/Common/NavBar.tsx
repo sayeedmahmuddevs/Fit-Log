@@ -16,9 +16,9 @@ const linkClass = (path: string) =>
     : "hover:bg-gray-800 hover:text-amber-400 rounded-2xl py-0.5 px-2 hover:outline outline-gray-700";
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full">
+    <nav className="fixed top-0 left-0 z-50 w-full px-5">
       <div className="flex justify-between items-center container mx-auto dark:bg-black bg-gray-300 py-5">
-        <div className="flex gap-2">
+        <Link href="/" className="flex gap-2">
           <Image
             src={logo}
             alt="Fitness logo"
@@ -28,7 +28,7 @@ const linkClass = (path: string) =>
           />
 
           <h1 className="text-2xl uppercase font-bold">Fitlog</h1>
-        </div>
+        </Link>
 
         <ul className="flex gap-5">
           <Link href="/" className={linkClass("/")}>

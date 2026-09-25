@@ -1,10 +1,11 @@
+import ProgressBar from '@/Component/My-Plane/ProgressBar'
 import React from 'react'
 
 function page() {
   return (
-    <div>
-      My plan
-    </div>
+    <section>
+      <ProgressBar/>
+    </section>
   )
 }
 

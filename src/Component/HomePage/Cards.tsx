@@ -1,7 +1,7 @@
 import React from 'react'
 import CardDetails from '../Common/Card'
 import {AllData} from "@/Data/AllData"
-import { TypeData } from '@/Type'
+import { TypeData } from '@/TypeData'
 
 
 
