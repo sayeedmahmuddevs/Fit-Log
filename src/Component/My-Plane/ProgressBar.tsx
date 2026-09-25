@@ -11,10 +11,22 @@ import EmpityBar from "./EmpityBar";
 
 
 function ProgressBar() {
-
+    // data context
     const {plan, saved} = useContext(fitContext)
 
+    // card show hide
     const [show, setShow] = useState(false)
+
+        const planData = {
+            min : plan.reduce((acc, min) => acc + Number(min.duration), 0),
+            calories : plan.reduce((acc, min) => acc + Number(min.caloriesBurned), 0)
+
+        }
+
+        const savedData = {
+            min : saved.reduce((acc, min) => acc + Number(min.duration), 0),
+            calories : saved.reduce((acc, min) => acc + Number(min.caloriesBurned), 0)
+        }
 
     
 
@@ -30,17 +42,31 @@ function ProgressBar() {
       <div className="bg-gray-900 py-4 rounded-2xl grid grid-cols-3 px-10">
         <div>
           <p>Exercises</p>
-          <span className="text-5xl font-bold text-amber-300">2</span>
+          <span className="text-5xl font-bold text-amber-300">
+            
+            {!show && plan.length} 
+            {show && saved.length}
+            
+            </span>
         </div>
 
         <div className="outline outline-gray-800 pl-5 py-1">
           <p>Munites</p>
-          <span className="text-5xl font-bold">2</span>
+          <span className="text-5xl font-bold">
+            
+            {!show && planData.min}
+            {show && savedData.min}
+            
+            </span>
         </div>
 
         <div className="outline outline-gray-800 py-1 pl-5">
           <p>Calories</p>
-          <span className="text-5xl font-bold">2</span>
+          <span className="text-5xl font-bold">
+            {!show && planData.calories}
+            {show && savedData.calories}
+
+          </span>
         </div>
       </div>
 

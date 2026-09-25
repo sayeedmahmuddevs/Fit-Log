@@ -26,13 +26,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={` ${geistSans.variable} ${geistMono.variable} h-full antialiased `}
     >
-      <body className="min-h-full flex flex-col dark:bg-black dark:text-white bg-gray-100 px-4 scrollbar-none">
+      <body className="min-h-full flex flex-col dark:bg-black dark:text-white bg-gray-100">
         <Context>
           <NavBar />
 
           <hr className="opacity-15 m-5" />
 
-          <div className="container mx-auto mt-10">{children}</div>
+          <div className="container mx-auto mt-10 px-10">{children}</div>
 
           <Footer />
         </Context>
