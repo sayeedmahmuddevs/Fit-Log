@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import MarkCard from "./MarkCard";
 import { useContext, useState } from "react";
 import { fitContext } from "@/DataContext/Context";
+import EmpityBar from "./EmpityBar";
 
 
 
@@ -18,7 +19,7 @@ function ProgressBar() {
     
 
   return (
-    <div className="mt-10 p-5">
+    <div className="p-5">
       <div className="mb-10">
         <h1 className="text-4xl font-bold uppercase mb-1">My Plane</h1>
         <p className="text-gray-400">
@@ -47,12 +48,12 @@ function ProgressBar() {
         <div className="py-1 px-1 rounded-2xl outline outline-gray-600">
           <button 
           onClick={() => setShow(false)}
-          className="py-1 px-2 rounded-xl outline outline-gray-600 mr-3">
+          className={`py-1 px-2 rounded-xl  mr-3 ${!show? "outline outline-gray-600" : "text-gray-500"}`}>
             {"Today's"} Plan
           </button>
           <button 
           onClick={() => setShow(true)}
-          className="py-1 px-2 rounded-xl outline outline-gray-600 ">
+          className={`py-1 px-2 rounded-xl  mr-3 ${show? "outline outline-gray-600" : "text-gray-500"}`}>
             {" "}
             Saved
           </button>
@@ -84,8 +85,13 @@ function ProgressBar() {
 
       <div className="mt-5">
 
-        {show && plan.map( (card, index) => ( <MarkCard key={index} card ={card}/>))}
-        {!show && saved.map( (card, index) => ( <MarkCard key={index} card ={card}/>))}
+        {plan.length === 0 && !show && <EmpityBar/>}
+        {saved.length === 0 && show && <EmpityBar/>}
+            
+        
+
+        {!show && plan.map( (card, index) => ( <MarkCard key={index} card ={card}/>))}
+        {show && saved.map( (card, index) => ( <MarkCard key={index} card ={card}/>))}
 
     
       </div>
