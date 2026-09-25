@@ -4,51 +4,77 @@ import { fitContext } from "@/DataContext/Context";
 import { TypeData } from "@/Type";
 import { useContext } from "react";
 import { CiBookmark } from "react-icons/ci";
+import { toast } from "react-toastify";
+import { FaCheck } from "react-icons/fa6";
+
 
 interface CardDetailsBtnProps {
   fitLogCard: TypeData;
 }
 
 export default function CardDetailsBtn({ fitLogCard }: CardDetailsBtnProps) {
-  const { setPlan, setSaved } = useContext(fitContext);
+    // data Context
+  const {plan, setPlan, saved, setSaved } = useContext(fitContext);
+    
+  // check already added
+  const isPlanned = plan.some((cd) => cd.id === fitLogCard.id);
+  const isSaved = saved.some((cd) => cd.id === fitLogCard.id);
 
 
 //   plan Card update
   const handlePlane = (card: TypeData) => {
-    setPlan((pre) => {
-      if (pre.some((cd) => cd.id === card.id)) return pre;
-
-      return [...pre, card];
-    });
+   if (isPlanned) return ;
+    setPlan((pre) => [...pre, card]);
+    toast.success(`added to Plan ${card.name}`)
   };
 
 
   //   saved Card update
   const handleSaved = (card: TypeData) => {
-    setSaved((pre) => {
-      if (pre.some((cd) => cd.id === card.id)) return pre;
-
-      return [...pre, card];
-    });
+      if (isSaved) return ;
+    setSaved((pre) => [...pre, card]);
+    toast.success(`added to saved ${card.name}`)
   };
 
   
-
   return (
-    <div>
+    <div className="flex gap-5">
+      {/* Today's Plan */}
       <button
         onClick={() => handlePlane(fitLogCard)}
-        className="px-3 py-2 bg-amber-400 text-black rounded-2xl flex justify-center items-center gap-2"
+        disabled={isPlanned}
+        className={`px-3 py-2 rounded-2xl flex justify-center items-center gap-2 transition-all duration-200 ${
+          isPlanned
+            ? "bg-green-100 text-green-700 border border-green-300 cursor-default"
+            : "bg-amber-400 text-black hover:bg-amber-500 cursor-pointer"
+        }`}
       >
-        {" "}
-        <span className="size-4  rounded-full border border-black "></span> Add
-        to todays is play
+        <span
+          className={`size-4 rounded-full flex items-center justify-center ${
+            isPlanned
+              ? "bg-green-500 text-white"
+              : "border border-black"
+          }`}
+        >
+          {isPlanned && <span className="text-[10px]"><FaCheck/></span>}
+        </span>
+
+        {isPlanned ? "Already Added" : "Add to today's plan"}
       </button>
-      <button 
+
+      {/* saved */}
+      <button
         onClick={() => handleSaved(fitLogCard)}
-      className="px-3 py-2  dark:text-white rounded-2xl flex justify-center items-center gap-2 outline">
-        {" "}
-        <CiBookmark /> Save for latter
+        disabled={isSaved}
+        className={`px-3 py-2 rounded-2xl flex justify-center items-center gap-2 transition-all duration-200 ${
+          isSaved
+            ? "bg-blue-100 text-blue-700 border border-blue-300 cursor-default"
+            : "dark:text-white outline hover:bg-gray-100 hover:text-black"
+        }`}
+      >
+        {isSaved ? ( <> <CiBookmark className="fill-blue-600" /> Saved </> ) : 
+        (<> <CiBookmark /> Save for later </>)
+        }
       </button>
     </div>
   );

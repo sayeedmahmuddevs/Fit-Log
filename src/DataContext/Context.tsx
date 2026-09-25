@@ -8,13 +8,17 @@ interface CardContextProps{
     setPlan : React.Dispatch<React.SetStateAction<TypeData[]>>;
     saved : TypeData[]
     setSaved : React.Dispatch<React.SetStateAction<TypeData[]>>;
+    show: boolean
+    setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const fitContext = createContext<CardContextProps>({
     plan : [],
     setPlan : () => {},
     saved : [], 
-    setSaved : ()  => {}
+    setSaved : ()  => {},
+    show: false,
+    setShow: () => {}
     
 })
 
@@ -23,9 +27,10 @@ export const fitContext = createContext<CardContextProps>({
 function Context({children}: {children: ReactNode}) {
     const [plan, setPlan] = useState<TypeData[]>([])
     const [saved, setSaved] = useState<TypeData[]>([])
+    const [show, setShow] = useState(false)
 
     const providorData = {
-        plan, setPlan, saved, setSaved 
+        plan, setPlan, saved, setSaved, show, setShow
     }
 
   return (

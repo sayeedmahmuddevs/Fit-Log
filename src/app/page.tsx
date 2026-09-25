@@ -3,7 +3,7 @@ import WorkCards from "@/Component/HomePage/Cards";
 
 export default function Home() {
   return (
-    <div>
+    <div className="mb-10">
         <HeroSection/>
         <WorkCards/>
     </div>

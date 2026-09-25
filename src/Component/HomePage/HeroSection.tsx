@@ -4,7 +4,7 @@ import banner from "@/assets/banner.png";
 function HeroSection() {
   return (
     <section>
-      <div className="grid lg:grid-cols-2 gap-5 bg-gray-300 dark:bg-gray-900 rounded-4xl py-10 px-15">
+      <div className="grid lg:grid-cols-2 gap-5 bg-gray-300 dark:bg-gray-900 rounded-4xl py-5 px-15">
         <div className="mt-20">
           <h4 className="text-xl uppercase text-amber-200 font-semibold mt-10 mb-4">
             Workout Library

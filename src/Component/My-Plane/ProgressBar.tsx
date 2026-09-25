@@ -2,7 +2,7 @@
 
 import { FaSearch } from "react-icons/fa";
 import MarkCard from "./MarkCard";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { fitContext } from "@/DataContext/Context";
 import EmpityBar from "./EmpityBar";
 
@@ -12,10 +12,9 @@ import EmpityBar from "./EmpityBar";
 
 function ProgressBar() {
     // data context
-    const {plan, saved} = useContext(fitContext)
+    const {plan, saved, show, setShow} = useContext(fitContext)
 
-    // card show hide
-    const [show, setShow] = useState(false)
+    
 
         const planData = {
             min : plan.reduce((acc, min) => acc + Number(min.duration), 0),
@@ -39,7 +38,7 @@ function ProgressBar() {
         </p>
       </div>
 
-      <div className="bg-gray-900 py-4 rounded-2xl grid grid-cols-3 px-10">
+      <div className="dark:bg-gray-800 bg-gray-200 outline-gray-200 py-4 rounded-2xl grid grid-cols-3 px-10">
         <div>
           <p>Exercises</p>
           <span className="text-5xl font-bold text-amber-300">
@@ -50,7 +49,7 @@ function ProgressBar() {
             </span>
         </div>
 
-        <div className="outline outline-gray-800 pl-5 py-1">
+        <div className="outline dark:outline-gray-800 outline-gray-300 pl-5 py-1">
           <p>Munites</p>
           <span className="text-5xl font-bold">
             
@@ -60,7 +59,7 @@ function ProgressBar() {
             </span>
         </div>
 
-        <div className="outline outline-gray-800 py-1 pl-5">
+        <div className="outline dark:outline-gray-800 outline-gray-300 py-1 pl-5">
           <p>Calories</p>
           <span className="text-5xl font-bold">
             {!show && planData.calories}
@@ -74,12 +73,12 @@ function ProgressBar() {
         <div className="py-1 px-1 rounded-2xl outline outline-gray-600">
           <button 
           onClick={() => setShow(false)}
-          className={`py-1 px-2 rounded-xl  mr-3 ${!show? "outline outline-gray-600" : "text-gray-500"}`}>
+          className={`py-1 px-2 rounded-xl cursor-pointer mr-3 ${!show? "outline outline-gray-600" : "text-gray-500"}`}>
             {"Today's"} Plan
           </button>
           <button 
           onClick={() => setShow(true)}
-          className={`py-1 px-2 rounded-xl  mr-3 ${show? "outline outline-gray-600" : "text-gray-500"}`}>
+          className={`py-1 px-2 rounded-xl cursor-pointer mr-3 ${show? "outline outline-gray-600" : "text-gray-500"}`}>
             {" "}
             Saved
           </button>
@@ -101,7 +100,7 @@ function ProgressBar() {
 
         <div className="flex gap-2 items-center">
           <p>Sort by :</p>
-          <select className="outline outline-gray-600 rounded-lg px-2 py-1 bg-gray-900">
+          <select className="outline outline-gray-600 rounded-lg px-2 py-1 dark:bg-gray-900 bg-gray-200">
             <option>Duration</option>
             <option>A-Z</option>
             <option>Z-A</option>
@@ -109,7 +108,7 @@ function ProgressBar() {
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 h-100 overflow-scroll scrollbar-none">
 
         {plan.length === 0 && !show && <EmpityBar/>}
         {saved.length === 0 && show && <EmpityBar/>}

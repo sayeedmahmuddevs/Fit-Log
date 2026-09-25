@@ -2,7 +2,7 @@
 
 export default function Loading() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-950">
+    <div className="flex min-h-screen items-center justify-center dark:bg-slate-950 bg-slate-200">
       <div className="flex flex-col items-center gap-6">
         {/* Spinner */}
         <div className="relative h-16 w-16">

@@ -11,7 +11,7 @@ interface MarkCard{
 
 export default function MarkCard({card} : MarkCard) {
   return (
-    <div className="flex justify-between items-center px-2 py-2 bg-gray-800 rounded-2xl mb-5">
+    <div className="flex justify-between items-center px-2 py-2 dark:bg-gray-800 bg-gray-200 rounded-2xl mb-5">
             <div className="flex gap-5 items-center">
                 <div>
                     img
