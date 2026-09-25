@@ -3,14 +3,20 @@
 import { TypeData } from "@/Type";
 import { createContext, ReactNode, useState } from "react";
 
-// interface CardContextProps{
-//     plan: TypeData[]
-//     setPlan : React.Dispatch<React.SetStateAction<TypeData[]>>;
-//     saved : TypeData[]
-//     setSaved : React.Dispatch<React.SetStateAction<TypeData[]>>;
-// }
+interface CardContextProps{
+    plan: TypeData[]
+    setPlan : React.Dispatch<React.SetStateAction<TypeData[]>>;
+    saved : TypeData[]
+    setSaved : React.Dispatch<React.SetStateAction<TypeData[]>>;
+}
 
-export const fitContext = createContext({})
+export const fitContext = createContext<CardContextProps>({
+    plan : [],
+    setPlan : () => {},
+    saved : [], 
+    setSaved : ()  => {}
+    
+})
 
 
 

@@ -1,7 +1,8 @@
+import CardDetailsBtn from "@/Component/Common/CardDetailsBtn";
 import { AllData } from "@/Data/AllData";
 import { TypeData } from "@/Type";
 import Image from "next/image";
-import { CiBookmark } from "react-icons/ci";
+
 
 
 interface FitLogCardDetailsProps {
@@ -77,9 +78,8 @@ async function FitLogCardDetails({ params }: FitLogCardDetailsProps) {
           </div>
 
           <div className="flex items-center gap-10 mt-10 ">
-          <button className="px-3 py-2 bg-amber-400 text-black rounded-2xl flex justify-center items-center gap-2"> <span className="size-4  rounded-full border border-black "></span> Add to todays is play</button>
-          <button className="px-3 py-2  dark:text-white rounded-2xl flex justify-center items-center gap-2 outline"> <CiBookmark/> Save for latter</button>
-
+          
+            <CardDetailsBtn fitLogCard = {fitLogCard}/>
 
           </div>
         </div>

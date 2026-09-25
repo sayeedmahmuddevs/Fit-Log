@@ -2,7 +2,7 @@
 
 import { FaSearch } from "react-icons/fa";
 import MarkCard from "./MarkCard";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { fitContext } from "@/DataContext/Context";
 
 
@@ -11,8 +11,11 @@ import { fitContext } from "@/DataContext/Context";
 
 function ProgressBar() {
 
-    const markData = useContext(fitContext)
-    console.log(markData)
+    const {plan, saved} = useContext(fitContext)
+
+    const [show, setShow] = useState(false)
+
+    
 
   return (
     <div className="mt-10 p-5">
@@ -42,10 +45,14 @@ function ProgressBar() {
 
       <div className="flex justify-between mt-5">
         <div className="py-1 px-1 rounded-2xl outline outline-gray-600">
-          <button className="py-1 px-2 rounded-xl outline outline-gray-600 mr-3">
+          <button 
+          onClick={() => setShow(false)}
+          className="py-1 px-2 rounded-xl outline outline-gray-600 mr-3">
             {"Today's"} Plan
           </button>
-          <button className="py-1 px-2 rounded-xl outline outline-gray-600 ">
+          <button 
+          onClick={() => setShow(true)}
+          className="py-1 px-2 rounded-xl outline outline-gray-600 ">
             {" "}
             Saved
           </button>
@@ -75,10 +82,12 @@ function ProgressBar() {
         </div>
       </div>
 
-      <div>
-        <MarkCard/>
+      <div className="mt-5">
 
+        {show && plan.map( (card, index) => ( <MarkCard key={index} card ={card}/>))}
+        {!show && saved.map( (card, index) => ( <MarkCard key={index} card ={card}/>))}
 
+    
       </div>
     </div>
   );
