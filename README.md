@@ -12,10 +12,6 @@ FitLog is a modern and responsive workout library application built with Next.js
 - **React** — Building interactive UI components
 - **TypeScript** — Type-safe development
 - **Tailwind CSS** — Styling and responsive design
-- **Context API** — Global state management
-- **localStorage** — Persisting plan and saved workout data
-- **React Icons** — Interface icons
-- **Vercel** — Deployment
 
 ## ✨ Key Features
 

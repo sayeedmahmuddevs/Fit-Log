@@ -2,6 +2,7 @@ import CardDetailsBtn from "@/Component/Common/CardDetailsBtn";
 import { AllData } from "@/Data/AllData";
 import { TypeData } from "@/Type";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 
 
@@ -17,7 +18,11 @@ async function FitLogCardDetails({ params }: FitLogCardDetailsProps) {
 
   const fitLogCard = data.find(
     (card: TypeData) => String(card.id) === String(id)
-  ) as TypeData;
+  )
+
+  if (!fitLogCard) {
+    notFound();
+  }
 
   const singleCard = Object.keys(fitLogCard);
   console.log(singleCard);
