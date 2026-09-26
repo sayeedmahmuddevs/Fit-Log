@@ -5,6 +5,7 @@ import MarkCard from "./MarkCard";
 import { useContext, useState } from "react";
 import { fitContext } from "@/DataContext/Context";
 import EmpityBar from "./EmpityBar";
+import { toast } from "react-toastify";
 
 type SortType = "default" | "duration" | "calories" | "rating";
 
@@ -45,6 +46,8 @@ function ProgressBar() {
     return 0;
   });
 
+
+
   // remove Data
   const handleRemoveData = (id: string) => {
     const someOfCard = (show ? saved : plan).some(
@@ -57,6 +60,18 @@ function ProgressBar() {
       );
     }
   };
+
+  const markAsRead = (id:number) => {
+    setPlan((pre) => 
+    pre.map(card => 
+      card.id === id ? {...card, isMark: true} : card
+    )
+    )
+
+    toast.success("Mark as done")
+  }
+
+
 
   return (
 
@@ -166,6 +181,9 @@ function ProgressBar() {
             key={index}
             card={card}
             handleRemoveData={handleRemoveData}
+            markAsRead = {markAsRead}
+            show = {show}
+            
           />
         ))}
       </div>
