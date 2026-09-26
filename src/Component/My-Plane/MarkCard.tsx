@@ -1,5 +1,6 @@
 import { TypeData } from "@/Type";
 import Image from "next/image";
+import Link from "next/link";
 import { CiTimer } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
@@ -72,7 +73,12 @@ export default function MarkCard({ card, handleRemoveData, markAsRead,show}: Mar
     <button
       className="px-3 py-2 text-xs sm:text-sm outline outline-amber-400 rounded-xl font-semibold whitespace-nowrap"
     >
+      <Link
+      href={`/Fitlog/${card.id}`}
+      >
       View Details
+      
+      </Link>
     </button>
 
     {

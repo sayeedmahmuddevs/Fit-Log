@@ -7,7 +7,6 @@ import { CiBookmark } from "react-icons/ci";
 import { toast } from "react-toastify";
 import { FaCheck } from "react-icons/fa6";
 
-
 interface CardDetailsBtnProps {
   fitLogCard: TypeData;
 }
@@ -24,14 +23,18 @@ export default function CardDetailsBtn({ fitLogCard }: CardDetailsBtnProps) {
 //   plan Card update
   const handlePlane = (card: TypeData) => {
     if (isPlanned) return ;
+
+    if(plan.length >= 5) return toast.error(`when the plan already contains 5 lifts`)
     
     setPlan((pre) => {
       const planUpdate = [...pre, card]
-      localStorage.setItem("Plan", JSON.stringify(planUpdate))
+      localStorage.setItem("plan", JSON.stringify(planUpdate))
       return planUpdate
   });
-  
+
     toast.success(`added to Plan ${card.name}`)
+
+
 
   };
 
@@ -39,11 +42,12 @@ export default function CardDetailsBtn({ fitLogCard }: CardDetailsBtnProps) {
 
   //   saved Card update
   const handleSaved = (card: TypeData) => {
-    if (isSaved) return ;
+    if (isSaved) return  ;
+    if(saved.length >= 5) return toast.error(`when the saved already contains 5 lifts`)
 
     setSaved((pre) => {
       const savedUpdate = [...pre, card]
-      localStorage.setItem("Saved", JSON.stringify(savedUpdate))
+      localStorage.setItem("save", JSON.stringify(savedUpdate))
       return savedUpdate    
   });
 

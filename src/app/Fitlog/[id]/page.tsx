@@ -56,7 +56,7 @@ async function FitLogCardDetails({ params }: FitLogCardDetailsProps) {
               className={`flex justify-between px-6 py-3 ${index === 6 ? "" : "border-b" }  border-gray-700`}
             >
               <span className="uppercase">{card}</span>{" "}
-              <span>{fitLogCard[card as keyof TypeData]}</span>
+              <span>{fitLogCard[card as keyof TypeData]} {index ===2 ? "min": index ===3 ? "kcal" : ""} </span>
             </div>
           ))}
         </div>
