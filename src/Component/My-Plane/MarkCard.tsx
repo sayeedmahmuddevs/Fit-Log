@@ -4,6 +4,7 @@ import { CiTimer } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+import { toast } from "react-toastify";
 
 
 interface MarkCard{
@@ -63,7 +64,11 @@ export default function MarkCard({card, handleRemoveData} : MarkCard) {
                 <button className="px-3 py-1 outline outline-amber-400 rounded-xl font-semibold">View Details</button>
                 <button className="px-3 py-1  bg-amber-400 rounded-xl text-black font-semibold">Mark as Done</button>
                 <button 
-                onClick={() => handleRemoveData(String(card.id))}
+                onClick={() => {
+                  handleRemoveData(String(card.id))
+                  toast.success(`Removed ${card.name}`)
+                  
+                }}
                 className="text-4xl"> <IoMdClose/></button>
                 
 

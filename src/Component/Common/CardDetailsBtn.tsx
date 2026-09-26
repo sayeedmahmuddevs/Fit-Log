@@ -23,17 +23,32 @@ export default function CardDetailsBtn({ fitLogCard }: CardDetailsBtnProps) {
 
 //   plan Card update
   const handlePlane = (card: TypeData) => {
-   if (isPlanned) return ;
-    setPlan((pre) => [...pre, card]);
+    if (isPlanned) return ;
+    
+    setPlan((pre) => {
+      const planUpdate = [...pre, card]
+      localStorage.setItem("Plan", JSON.stringify(planUpdate))
+      return planUpdate
+  });
+  
     toast.success(`added to Plan ${card.name}`)
+
   };
+
 
 
   //   saved Card update
   const handleSaved = (card: TypeData) => {
-      if (isSaved) return ;
-    setSaved((pre) => [...pre, card]);
+    if (isSaved) return ;
+
+    setSaved((pre) => {
+      const savedUpdate = [...pre, card]
+      localStorage.setItem("Saved", JSON.stringify(savedUpdate))
+      return savedUpdate    
+  });
+
     toast.success(`added to saved ${card.name}`)
+
   };
 
   

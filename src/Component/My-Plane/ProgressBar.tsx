@@ -59,6 +59,7 @@ function ProgressBar() {
   };
 
   return (
+
     <div className="p-5">
       <div className="mb-10">
         <h1 className="text-4xl font-bold uppercase mb-1">My Plane</h1>
@@ -67,6 +68,7 @@ function ProgressBar() {
         </p>
       </div>
 
+{/* progressBar */}
       <div className="dark:bg-gray-800 bg-gray-200 outline-gray-200 py-4 rounded-2xl grid grid-cols-3 px-10">
         <div>
           <p>Exercises</p>
@@ -93,16 +95,26 @@ function ProgressBar() {
         </div>
       </div>
 
+
+{/* Data button */}
       <div className="flex justify-between mt-5">
         <div className="py-1 px-1 rounded-2xl outline outline-gray-600">
           <button
-            onClick={() => setShow(false)}
+            onClick={() => {
+                setShow(false)
+                setSearch("")
+                setSorted("default")
+            }}
             className={`py-1 px-2 rounded-xl cursor-pointer mr-3 ${!show ? "outline outline-gray-600" : "text-gray-500"}`}
           >
             {"Today's"} Plan
           </button>
           <button
-            onClick={() => setShow(true)}
+            onClick={() => {
+                setShow(true)
+                setSearch("")
+                setSorted("default")
+            }}
             className={`py-1 px-2 rounded-xl cursor-pointer mr-3 ${show ? "outline outline-gray-600" : "text-gray-500"}`}
           >
             {" "}
@@ -110,6 +122,7 @@ function ProgressBar() {
           </button>
         </div>
 
+{/* search input */}
         <div className="relative w-full max-w-sm">
           <search>
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -126,6 +139,7 @@ function ProgressBar() {
           </search>
         </div>
 
+{/* sorted */}
         <div className="flex gap-2 items-center">
           <p>Sort by :</p>
           <select
@@ -141,6 +155,7 @@ function ProgressBar() {
         </div>
       </div>
 
+{/* render Card */}
       <div className="mt-5 h-100 overflow-scroll scrollbar-none">
         {/* empity Bar */}
         {SortData.length === 0 && <EmpityBar />}

@@ -1,5 +1,3 @@
-import Link from "next/link";
-import React from "react";
 
 export default function EmpityBar() {
   return (
@@ -8,11 +6,6 @@ export default function EmpityBar() {
       <p className="text-gray-500 mb-5">
         Browse the library and add a lift to get today moving
       </p>
-      <button className="px-3 py-2 bg-amber-300 rounded-2xl ">
-        <Link href="/">
-            Go to Workouts
-        </Link>
-      </button>
     </div>
   );
 }

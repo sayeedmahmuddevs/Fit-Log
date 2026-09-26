@@ -22,9 +22,8 @@ export const fitContext = createContext<CardContextProps>({
     
 })
 
-
-
 function Context({children}: {children: ReactNode}) {
+
     const [plan, setPlan] = useState<TypeData[]>([])
     const [saved, setSaved] = useState<TypeData[]>([])
     const [show, setShow] = useState(false)
@@ -33,6 +32,7 @@ function Context({children}: {children: ReactNode}) {
         plan, setPlan, saved, setSaved, show, setShow
     }
 
+    
   return (
     <fitContext.Provider value ={providorData}> {children}</fitContext.Provider>
   )
