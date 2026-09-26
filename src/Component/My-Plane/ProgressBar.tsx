@@ -46,8 +46,6 @@ function ProgressBar() {
     return 0;
   });
 
-
-
   // remove Data
   const handleRemoveData = (id: string) => {
     const someOfCard = (show ? saved : plan).some(
@@ -61,20 +59,15 @@ function ProgressBar() {
     }
   };
 
-  const markAsRead = (id:number) => {
-    setPlan((pre) => 
-    pre.map(card => 
-      card.id === id ? {...card, isMark: true} : card
-    )
-    )
+  const markAsRead = (id: number) => {
+    setPlan((pre) =>
+      pre.map((card) => (card.id === id ? { ...card, isMark: true } : card)),
+    );
 
-    toast.success("Mark as done")
-  }
-
-
+    toast.success("Mark as done");
+  };
 
   return (
-
     <div className="p-5">
       <div className="mb-10">
         <h1 className="text-4xl font-bold uppercase mb-1">My Plane</h1>
@@ -83,7 +76,7 @@ function ProgressBar() {
         </p>
       </div>
 
-{/* progressBar */}
+      {/* progressBar */}
       <div className="dark:bg-gray-800 bg-gray-200 outline-gray-200 py-4 rounded-2xl grid grid-cols-3 px-10">
         <div>
           <p>Exercises</p>
@@ -110,15 +103,14 @@ function ProgressBar() {
         </div>
       </div>
 
-
-{/* Data button */}
+      {/* Data button */}
       <div className="flex justify-between mt-5">
         <div className="py-1 px-1 rounded-2xl outline outline-gray-600">
           <button
             onClick={() => {
-                setShow(false)
-                setSearch("")
-                setSorted("default")
+              setShow(false);
+              setSearch("");
+              setSorted("default");
             }}
             className={`py-1 px-2 rounded-xl cursor-pointer mr-3 ${!show ? "outline outline-gray-600" : "text-gray-500"}`}
           >
@@ -126,9 +118,9 @@ function ProgressBar() {
           </button>
           <button
             onClick={() => {
-                setShow(true)
-                setSearch("")
-                setSorted("default")
+              setShow(true);
+              setSearch("");
+              setSorted("default");
             }}
             className={`py-1 px-2 rounded-xl cursor-pointer mr-3 ${show ? "outline outline-gray-600" : "text-gray-500"}`}
           >
@@ -137,8 +129,8 @@ function ProgressBar() {
           </button>
         </div>
 
-{/* search input */}
-        <div className="relative w-full max-w-sm">
+        {/* search input */}
+        <div className="relative w-full max-w-sm hidden lg:block">
           <search>
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
               <FaSearch />
@@ -154,7 +146,7 @@ function ProgressBar() {
           </search>
         </div>
 
-{/* sorted */}
+        {/* sorted */}
         <div className="flex gap-2 items-center">
           <p>Sort by :</p>
           <select
@@ -170,7 +162,23 @@ function ProgressBar() {
         </div>
       </div>
 
-{/* render Card */}
+      <div className="relative w-full block lg:hidden mt-2">
+        <search>
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            <FaSearch />
+          </span>
+
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by fit..."
+            className="w-full rounded-lg border border-gray-300  py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-gray-500"
+          />
+        </search>
+      </div>
+
+      {/* render Card */}
       <div className="mt-5 h-100 overflow-scroll scrollbar-none">
         {/* empity Bar */}
         {SortData.length === 0 && <EmpityBar />}
@@ -181,9 +189,8 @@ function ProgressBar() {
             key={index}
             card={card}
             handleRemoveData={handleRemoveData}
-            markAsRead = {markAsRead}
-            show = {show}
-            
+            markAsRead={markAsRead}
+            show={show}
           />
         ))}
       </div>

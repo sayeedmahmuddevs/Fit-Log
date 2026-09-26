@@ -89,7 +89,7 @@ function Cards() {
       {SortData.length === 0 ? (
         <EmpityBar />
       ) : (
-        <div className="mt-5 grid grid-cols-3 gap-7 px-15 rounded-xl">
+        <div className="mt-5 grid lg:grid-cols-3 md:grid-cols-2 gap-7 px-15 rounded-xl">
           {SortData.map((card: TypeData, index: number) => (
             <CardDetails key={index} card={card} />
           ))}
